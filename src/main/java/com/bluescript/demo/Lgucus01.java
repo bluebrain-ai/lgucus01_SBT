@@ -118,13 +118,15 @@ public class Lgucus01 {
 
         // }
         BeanUtils.copyProperties(payload, dfhcommarea);
-        caCustomerRequest = convStrToObj.caRequestSpecificTocaCustomerRequest_1(dfhcommarea.getCaRequestSpecific(),
-                caCustomerRequest);
+        // caCustomerRequest = convStrToObj.caRequestSpecificTocaCustomerRequest_1(dfhcommarea.getCaRequestSpecific(),
+        // caCustomerRequest);
         dfhcommarea.setCaReturnCode(00);
         caCustomerRequest.setCaNumPolicies(00);
         emVariable.setEmCusnum(String.valueOf(dfhcommarea.getCaCustomerNum()));
-        if (dfhcommarea.getCaRequestId() == "01UCUS") {
+        // not equal check and exit --to check with bharathi
+        if (dfhcommarea.getCaRequestId() != "01UCUS") {
             dfhcommarea.setCaReturnCode(99);
+            throw new RuntimeException("LGUCUS01");
         }
 
         updateCustomerInfo();
