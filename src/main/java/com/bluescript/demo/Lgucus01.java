@@ -46,7 +46,7 @@ import com.bluescript.demo.model.CaEndowment;
 import com.bluescript.demo.model.CaHouse;
 import com.bluescript.demo.model.CaMotor;
 import com.bluescript.demo.model.CaCommercial;
-import com.bluescript.demo.mapper.ConvStrToObj;
+
 import com.bluescript.demo.model.CaClaim;
 
 @Getter
@@ -94,8 +94,6 @@ public class Lgucus01 {
     private String wsDate;
     private String caData;
     private int eibcalen;
-    @Autowired
-    private ConvStrToObj convStrToObj;
 
     @Value("${api.LGUCDB01.uri}")
     private String LGUCDB01_URI;
@@ -119,8 +117,8 @@ public class Lgucus01 {
 
         // }
         BeanUtils.copyProperties(payload, dfhcommarea);
-        caCustomerRequest = convStrToObj.caRequestSpecificTocaCustomerRequest_1(dfhcommarea.getCaRequestSpecific(),
-                caCustomerRequest);
+        log.warn("dfhcommarea:", dfhcommarea);
+
         dfhcommarea.setCaReturnCode(00);
         caCustomerRequest.setCaNumPolicies(00);
         emVariable.setEmCusnum(String.valueOf(dfhcommarea.getCaCustomerNum()));
