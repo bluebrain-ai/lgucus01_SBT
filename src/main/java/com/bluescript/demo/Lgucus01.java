@@ -26,6 +26,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,7 +61,7 @@ import com.bluescript.demo.model.CaClaim;
         @io.swagger.annotations.ApiResponse(code = 400, message = "This is a bad request, please follow the API documentation for the proper request format"),
         @io.swagger.annotations.ApiResponse(code = 401, message = "Due to security constraints, your access request cannot be authorized"),
         @io.swagger.annotations.ApiResponse(code = 500, message = "The server/Application is down. Please contact support team.") })
-
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class Lgucus01 {
 
     @Autowired
